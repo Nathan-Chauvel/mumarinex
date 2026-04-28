@@ -19,3 +19,5 @@ Collate:
     'mumarinex.R'
     'diagnostic_tool.R'
     'mum_GUI.R'
+URL: https://github.com/Nathan-Chauvel/mumarinex
+BugReports: https://github.com/Nathan-Chauvel/mumarinex/issues
