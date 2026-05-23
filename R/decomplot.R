@@ -29,7 +29,7 @@
 #'
 #' @examples
 #' data("Simulated_data")
-#' ref_idx<-41:50
+#' ref_idx<-1:10
 #' stations<-matrix(unlist(strsplit(rownames(Simulated_data),".",fixed=TRUE)),ncol=2,byrow=TRUE)[,1]
 #' decomplot(x=Simulated_data,g=stations,ref=ref_idx,main="Simulated data")
 decomplot<-function(x,g,ref,fill=c("lightblue","#FFFFE0DF","#90F0909E"),border=c("#0080AB","#C7C700DF","#0091009E"),main=NULL){

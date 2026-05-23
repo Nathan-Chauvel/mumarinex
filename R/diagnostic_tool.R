@@ -27,7 +27,7 @@
 #'
 #' @examples
 #' data("Simulated_data")
-#' ref_idx<-41:50
+#' ref_idx<-1:10
 #' stations<-matrix(unlist(strsplit(rownames(Simulated_data),".",fixed=TRUE)),ncol=2,byrow=TRUE)[,1]
 #' diagnostic_tool(x=Simulated_data,g=stations,ref=ref_idx)
 diagnostic_tool<-function(x,g,ref,signif_test=TRUE,mute=FALSE){

@@ -19,7 +19,7 @@
 #'
 #' @examples
 #' data("Simulated_data")
-#' ref_idx<-41:50
+#' ref_idx<-1:10
 #' mumarinex(x=Simulated_data,ref=ref_idx)
 #' mumarinex(x=Simulated_data,ref=ref_idx,subindices=TRUE)
 mumarinex<-function(x,ref,subindices=FALSE,log=TRUE){
