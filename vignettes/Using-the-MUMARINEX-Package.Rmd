@@ -75,7 +75,7 @@ Once the data are properly defined, the MUMARINEX index and its sub-indices can 
 
 ```{r}
 # Compute MUMARINEX and sub-indices
-rMUM <- mumarinex(x = Simulated_data, ref = ref_idx, subindices = TRUE)
+rMUM <- mumarinex(x = Simulated_data, ref = ref_idx, subindices = TRUE, log = FALSE)
 
 # Extract MUMARINEX
 rMUMARINEX<-rMUM$MUMARINEX
@@ -100,7 +100,7 @@ To better understand the variations in MUMARINEX, it is often useful to examine 
 
 ```{r,fig.width=10, fig.height=5}
 
-decomplot(x = Simulated_data, g = stations, ref = ref_idx, main = "Artificial data")
+decomplot(x = Simulated_data, g = stations, ref = ref_idx, log = FALSE, main = "Artificial data")
 ```
 
 # Generate diagnostics to interpret sub-indices variations
@@ -108,5 +108,5 @@ decomplot(x = Simulated_data, g = stations, ref = ref_idx, main = "Artificial da
 Once the sub-index variations underlying the final MUMARINEX value have been examined, the `diagnostic_tool()` function can be used to identify the species that best account for these changes.
 
 ```{r}
-diagnostic_tool(x = Simulated_data, g = stations, ref = ref_idx)
+diagnostic_tool(x = Simulated_data, g = stations, ref = ref_idx, log = FALSE)
 ```

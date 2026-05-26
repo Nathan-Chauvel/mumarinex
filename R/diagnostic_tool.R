@@ -13,6 +13,7 @@
 #' @param x A data frame or a matrix organized with samples in rows and species in columns.
 #' @param g A vector of length \code{nrow(x)} indicating how the samples should be grouped (e.g., stations, treatments).
 #' @param ref A logical or numeric vector identifying the reference row positions.
+#' @param log A logical indicating whether the data must be log transformed.
 #' @param signif_test Logical; if TRUE, only sub-indices significantly lower than the reference conditions (t-test, p < 0.05) are returned. Conditions that are not statistically significant are indicated by 'ns'.
 #' @param mute A logical indicating whether the results are displayed in the console.
 #'
@@ -29,8 +30,8 @@
 #' data("Simulated_data")
 #' ref_idx<-1:10
 #' stations<-matrix(unlist(strsplit(rownames(Simulated_data),".",fixed=TRUE)),ncol=2,byrow=TRUE)[,1]
-#' diagnostic_tool(x=Simulated_data,g=stations,ref=ref_idx)
-diagnostic_tool<-function(x,g,ref,signif_test=TRUE,mute=FALSE){
+#' diagnostic_tool(x=Simulated_data,g=stations,ref=ref_idx,log=FALSE)
+diagnostic_tool<-function(x,g,ref,log=TRUE,signif_test=TRUE,mute=FALSE){
 
   if(!(is.data.frame(x)||is.matrix(x))){
     stop("'x' must be a data frame or a matrix.")
@@ -68,7 +69,7 @@ diagnostic_tool<-function(x,g,ref,signif_test=TRUE,mute=FALSE){
     stop("'mute' must be a single logical value (TRUE or FALSE).")
   }
 
-  subind<-mumarinex(x,ref,T)$subindices
+  subind<-mumarinex(x,ref,T,log=log)$subindices
 
   ref_fact<-rep(NA,nrow(subind));ref_fact[ref]<-"R";ref_fact[-ref]<-as.character(g[-ref]);ref_fact<-factor(ref_fact)
   ref_fact<-ref_fact[-ref]

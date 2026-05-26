@@ -13,6 +13,7 @@
 #' @param x A data frame organized with samples in rows and species in columns.
 #' @param g A vector of length \code{nrow(x)} indicating how the samples should be grouped (e.g., stations, treatments).
 #' @param ref A logical or numeric vector identifying the reference row positions.
+#' @param log A logical indicating whether the data must be log transformed.
 #' @param fill Fill color of the boxplots.
 #' @param border Border color of the boxplots.
 #' @param main Main title of the plot.
@@ -31,8 +32,8 @@
 #' data("Simulated_data")
 #' ref_idx<-1:10
 #' stations<-matrix(unlist(strsplit(rownames(Simulated_data),".",fixed=TRUE)),ncol=2,byrow=TRUE)[,1]
-#' decomplot(x=Simulated_data,g=stations,ref=ref_idx,main="Simulated data")
-decomplot<-function(x,g,ref,fill=c("lightblue","#FFFFE0DF","#90F0909E"),border=c("#0080AB","#C7C700DF","#0091009E"),main=NULL){
+#' decomplot(x=Simulated_data,g=stations,ref=ref_idx,log=FALSE,main="Simulated data")
+decomplot<-function(x,g,ref,log=TRUE,fill=c("lightblue","#FFFFE0DF","#90F0909E"),border=c("#0080AB","#C7C700DF","#0091009E"),main=NULL){
 
   if(!(is.data.frame(x)||is.matrix(x))){
     stop("'x' must be a data frame or a matrix.")
@@ -63,7 +64,7 @@ decomplot<-function(x,g,ref,fill=c("lightblue","#FFFFE0DF","#90F0909E"),border=c
     stop("'main' must be either NULL or a character string.")
   }
 
-  subind<-mumarinex(x,ref,T)$subindices
+  subind<-mumarinex(x,ref,T,log=log)$subindices
 
   g<-factor(g,levels=unique(g))
 

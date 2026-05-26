@@ -1,8 +1,8 @@
 #' mumarinex
 #'@description
-#'Computes the MUMARINEX index and its sub-indices (SCSR, CBCS, and SPI), following the method described in Chauvel et al. (2025).
+#'Computes the MUMARINEX index and its sub-indices (SCSR, CBCS, and SPI), following the method described in Chauvel et al. (2026).
 #'
-#' @references Chauvel, N., Pezy, J.P., Grall, J., Thiébaut, E. (2025). A general-purpose Multivariate Marine Recovery Index for quantifying the influence of human activities on benthic habitat ecological status. Ecological Indicator.
+#' @references Chauvel, N., Pezy, J.P., Grall, J., Thiébaut, E. (2026). A general-purpose Multivariate Marine Recovery Index for quantifying the influence of human activities on benthic habitat ecological status. Ecological Indicator.
 #'
 #' @title MUMARINEX and subindices computation
 #'
@@ -20,8 +20,8 @@
 #' @examples
 #' data("Simulated_data")
 #' ref_idx<-1:10
-#' mumarinex(x=Simulated_data,ref=ref_idx)
-#' mumarinex(x=Simulated_data,ref=ref_idx,subindices=TRUE)
+#' mumarinex(x=Simulated_data,ref=ref_idx,log=FALSE)
+#' mumarinex(x=Simulated_data,ref=ref_idx,subindices=TRUE,log=FALSE)
 mumarinex<-function(x,ref,subindices=FALSE,log=TRUE){
 
   if(!(is.data.frame(x)||is.matrix(x))){
